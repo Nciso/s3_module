@@ -48,3 +48,50 @@ variable "log_expiration_days" {
   type        = number
   default     = 90
 }
+
+variable "context" {
+  type = object({
+    enabled             = bool
+    namespace           = string
+    cloud_provider      = string
+    account             = string
+    region              = string
+    environment         = string
+    stage               = string
+    domain              = string
+    name                = string
+    delimiter           = string
+    attributes          = list(string)
+    tags                = map(string)
+    additional_tag_map  = map(string)
+    regex_replace_chars = string
+    label_order         = list(string)
+    id_length_limit     = number
+  })
+  default = {
+    enabled             = true
+    namespace           = null
+    cloud_provider      = null
+    account             = null
+    region              = null
+    environment         = null
+    stage               = null
+    domain              = null
+    name                = null
+    delimiter           = null
+    attributes          = []
+    tags                = {}
+    additional_tag_map  = {}
+    regex_replace_chars = null
+    label_order         = []
+    id_length_limit     = null
+  }
+  description = <<-EOT
+    Single object for setting entire context at once.
+    See description of individual variables for details.
+    Leave string and numeric variables as `null` to use default value.
+    Individual variable settings (non-null) override settings in context object,
+    except for attributes, tags, and additional_tag_map, which are merged.
+  EOT
+}
+
