@@ -75,7 +75,7 @@ variable "context" {
     account             = null
     region              = null
     environment         = null
-    stage               = null
+    stage               = "HELLO"
     domain              = null
     name                = null
     delimiter           = null
@@ -84,7 +84,7 @@ variable "context" {
     additional_tag_map  = {}
     regex_replace_chars = null
     label_order         = []
-    id_length_limit     = null
+    id_length_limit     = 454
   }
   description = <<-EOT
     Single object for setting entire context at once.
